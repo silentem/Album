@@ -102,7 +102,7 @@ public class MediaReader {
                 IMAGES,
                 null,
                 null,
-                " _id desc limit " + mAmountFilter);
+                " _id desc limit " + (mAmountFilter == null ? 500 : mAmountFilter));
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
