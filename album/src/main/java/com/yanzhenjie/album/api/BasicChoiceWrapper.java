@@ -32,6 +32,7 @@ public abstract class BasicChoiceWrapper<Returner extends BasicChoiceWrapper, Re
 
     Filter<Long> mSizeFilter;
     Filter<String> mMimeTypeFilter;
+    Long mAmountFilter;
 
     boolean mFilterVisibility = true;
 

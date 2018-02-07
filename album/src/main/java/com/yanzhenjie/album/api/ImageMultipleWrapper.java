@@ -58,6 +58,7 @@ public final class ImageMultipleWrapper extends BasicChoiceWrapper<ImageMultiple
     public void start() {
         AlbumActivity.mSizeFilter = mSizeFilter;
         AlbumActivity.mMimeFilter = mMimeTypeFilter;
+        AlbumActivity.mAmountFilter = mAmountFilter;
         AlbumActivity.sResult = mResult;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
