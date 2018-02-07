@@ -100,7 +100,7 @@ public class MediaReader {
                 IMAGES,
                 null,
                 null,
-                MediaStore.Images.Media.DATE_ADDED);
+                " _id desc limit " + 1000);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
