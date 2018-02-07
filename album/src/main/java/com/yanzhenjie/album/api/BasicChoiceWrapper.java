@@ -63,6 +63,13 @@ public abstract class BasicChoiceWrapper<Returner extends BasicChoiceWrapper, Re
         this.mSizeFilter = filter;
         return (Returner) this;
     }
+    /**
+     * Filter the amount of media.
+     */
+    public Returner filterAmount(Long filter) {
+        this.mAmountFilter = filter;
+        return (Returner) this;
+    }
 
     /**
      * Filter the file extension.
