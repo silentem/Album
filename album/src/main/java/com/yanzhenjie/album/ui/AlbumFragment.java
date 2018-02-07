@@ -107,6 +107,7 @@ public class AlbumFragment extends NoFragment {
     private Filter<Long> mSizeFilter;
     private Filter<String> mMimeFilter;
     private Filter<Long> mDurationFilter;
+    private Long mAmountFilter;
     private boolean mFilterVisibility;
 
     @IntRange(from = 0, to = 1)
@@ -126,6 +127,10 @@ public class AlbumFragment extends NoFragment {
 
     public void setDurationFilter(Filter<Long> durationFilter) {
         this.mDurationFilter = durationFilter;
+    }
+
+    public void setAmountFilter(Long mAmountFilter) {
+        this.mAmountFilter = mAmountFilter;
     }
 
     @Override
@@ -223,7 +228,7 @@ public class AlbumFragment extends NoFragment {
 
         mFilterVisibility = argument.getBoolean(Album.KEY_INPUT_FILTER_VISIBILITY, true);
         MediaReadTask scanTask = new MediaReadTask(getContext(), mFunction, mScanCallback, mCheckedList,
-                mSizeFilter, mMimeFilter, mDurationFilter, mFilterVisibility);
+                mSizeFilter, mMimeFilter, mDurationFilter, mAmountFilter, mFilterVisibility);
         ArrayList<AlbumFile> checkedList = argument.getParcelableArrayList(Album.KEY_INPUT_CHECKED_LIST);
         //noinspection unchecked
         scanTask.execute(checkedList);

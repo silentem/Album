@@ -54,6 +54,7 @@ public class AlbumActivity extends CompatActivity implements AlbumCallback {
     public static Filter<Long> mSizeFilter;
     public static Filter<String> mMimeFilter;
     public static Filter<Long> mDurationFilter;
+    public static Long mAmountFilter;
 
     public static Action<ArrayList<AlbumFile>> sResult;
     public static Action<String> sCancel;
@@ -161,6 +162,7 @@ public class AlbumActivity extends CompatActivity implements AlbumCallback {
                 albumFragment.setSizeFilter(mSizeFilter);
                 albumFragment.setMimeFilter(mMimeFilter);
                 albumFragment.setDurationFilter(mDurationFilter);
+                albumFragment.setAmountFilter(mAmountFilter);
                 startFragment(albumFragment);
                 break;
             }
@@ -230,6 +232,7 @@ public class AlbumActivity extends CompatActivity implements AlbumCallback {
         mSizeFilter = null;
         mMimeFilter = null;
         mDurationFilter = null;
+        mAmountFilter = null;
         sResult = null;
         sCancel = null;
         super.onDestroy();

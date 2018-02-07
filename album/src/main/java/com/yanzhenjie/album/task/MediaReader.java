@@ -43,14 +43,16 @@ public class MediaReader {
     private Filter<Long> mSizeFilter;
     private Filter<String> mMimeFilter;
     private Filter<Long> mDurationFilter;
+    private Long mAmountFilter;
     private boolean mFilterVisibility;
 
-    public MediaReader(Context context, Filter<Long> sizeFilter, Filter<String> mimeFilter, Filter<Long> durationFilter, boolean filterVisibility) {
+    public MediaReader(Context context, Filter<Long> sizeFilter, Filter<String> mimeFilter, Filter<Long> durationFilter, Long mAmountFilter, boolean filterVisibility) {
         this.mContext = context;
 
         this.mSizeFilter = sizeFilter;
         this.mMimeFilter = mimeFilter;
         this.mDurationFilter = durationFilter;
+        this.mAmountFilter = mAmountFilter;
         this.mFilterVisibility = filterVisibility;
     }
 
@@ -100,7 +102,7 @@ public class MediaReader {
                 IMAGES,
                 null,
                 null,
-                " _id desc limit " + 1000);
+                " _id desc limit " + mAmountFilter);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {

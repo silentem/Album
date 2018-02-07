@@ -33,6 +33,7 @@ import java.util.ArrayList;
 public class AlbumSingleWrapper extends BasicChoiceVideoWrapper<AlbumSingleWrapper, ArrayList<AlbumFile>, String, AlbumFile> {
 
     private Filter<Long> mDurationFilter;
+    private Long mAmountFilter;
 
     public AlbumSingleWrapper(@NonNull Context context) {
         super(context);
@@ -46,11 +47,17 @@ public class AlbumSingleWrapper extends BasicChoiceVideoWrapper<AlbumSingleWrapp
         return this;
     }
 
+    public AlbumSingleWrapper filterAmount(Long filter) {
+        this.mAmountFilter = filter;
+        return this;
+    }
+
     @Override
     public void start() {
         AlbumActivity.mSizeFilter = mSizeFilter;
         AlbumActivity.mMimeFilter = mMimeTypeFilter;
         AlbumActivity.mDurationFilter = mDurationFilter;
+        AlbumActivity.mAmountFilter = mAmountFilter;
         AlbumActivity.sResult = mResult;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
