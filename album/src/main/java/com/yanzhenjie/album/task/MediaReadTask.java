@@ -50,6 +50,7 @@ public class MediaReadTask extends AsyncTask<ArrayList<AlbumFile>, Void, ArrayLi
     private List<AlbumFile> mCheckedFiles;
 
     private Filter<Long> mSizeFilter;
+    private Long mAmountFilter;
     private Filter<String> mMimeFilter;
     private Filter<Long> mDurationFilter;
     private boolean mFilterVisibility;
@@ -57,7 +58,8 @@ public class MediaReadTask extends AsyncTask<ArrayList<AlbumFile>, Void, ArrayLi
     private Dialog mWaitDialog;
 
     public MediaReadTask(Context context, @Album.ChoiceFunction int function, Callback callback, List<AlbumFile> checkedFiles,
-                         Filter<Long> sizeFilter, Filter<String> mimeFilter, Filter<Long> durationFilter, boolean filterVisibility) {
+                         Filter<Long> sizeFilter, Filter<String> mimeFilter, Filter<Long> durationFilter, Long mAmountFilter,
+                         boolean filterVisibility) {
         this.mContext = context;
         this.mFunction = function;
         this.mCallback = callback;
@@ -66,6 +68,7 @@ public class MediaReadTask extends AsyncTask<ArrayList<AlbumFile>, Void, ArrayLi
         this.mSizeFilter = sizeFilter;
         this.mMimeFilter = mimeFilter;
         this.mDurationFilter = durationFilter;
+        this.mAmountFilter = mAmountFilter;
         this.mFilterVisibility = filterVisibility;
 
         this.mWaitDialog = new LoadingDialog(context);
@@ -87,7 +90,7 @@ public class MediaReadTask extends AsyncTask<ArrayList<AlbumFile>, Void, ArrayLi
     @Override
     protected final ArrayList<AlbumFolder> doInBackground(ArrayList<AlbumFile>... params) {
         ArrayList<AlbumFolder> albumFolders;
-        MediaReader mediaReader = new MediaReader(mContext, mSizeFilter, mMimeFilter, mDurationFilter, mFilterVisibility);
+        MediaReader mediaReader = new MediaReader(mContext, mSizeFilter, mMimeFilter, mDurationFilter, mAmountFilter, mFilterVisibility);
         switch (mFunction) {
             case Album.FUNCTION_CHOICE_IMAGE: {
                 albumFolders = mediaReader.getAllImage();

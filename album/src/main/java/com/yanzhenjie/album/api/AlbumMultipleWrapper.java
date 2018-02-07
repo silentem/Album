@@ -37,6 +37,7 @@ public class AlbumMultipleWrapper extends BasicChoiceAlbumWrapper<AlbumMultipleW
     private int mLimitCount = Integer.MAX_VALUE;
 
     private Filter<Long> mDurationFilter;
+    private Long mAmountFilter;
 
     public AlbumMultipleWrapper(@NonNull Context context) {
         super(context);
@@ -65,12 +66,17 @@ public class AlbumMultipleWrapper extends BasicChoiceAlbumWrapper<AlbumMultipleW
         this.mDurationFilter = filter;
         return this;
     }
+    public AlbumMultipleWrapper filterAmount(Long filter) {
+        this.mAmountFilter = filter;
+        return this;
+    }
 
     @Override
     public void start() {
         AlbumActivity.mSizeFilter = mSizeFilter;
         AlbumActivity.mMimeFilter = mMimeTypeFilter;
         AlbumActivity.mDurationFilter = mDurationFilter;
+        AlbumActivity.mAmountFilter = mAmountFilter;
         AlbumActivity.sResult = mResult;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);
